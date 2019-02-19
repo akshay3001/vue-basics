@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 2</title>
+</head>
+
+<body>
+    <section id="vueApp">
+        <button v-on:click="welcome">Welcome</button>
+        <!-- <input type="text" v-on:click="welcome"> -->
+        {{ greet }}
+
+        <div>
+            <header v-if="showHeader">
+                <h1>Header</h1>
+            </header>
+            <section v-if="showSection">
+                <p>Section is hidden</p>
+            </section>
+        </div>
+
+        <!-- v-for -->
+        <div>
+            <ol>
+                <li v-for="(name,n) in names">{{ name.name }} {{ n + 1 }}</li>
+            </ol>
+            <!-- <table border="1">
+                <tr v-for="name in names">
+                    <td>{{name.index}}</td>
+                    <td>{{name.name}}</td>
+                </tr>
+            </table> -->
+        </div>
+
+        <!-- v-model -->
+        <input type="text" v-model="name"> {{ name }}
+
+        <ol>
+            <!-- Create an instance of the todo-item component -->
+            <!-- <todo-item></todo-item> -->
+        </ol>
+
+        <!-- <my-custom-component v-for="item in customComponentList" v-bind:id="item" v-bind:name="item"></my-custom-component> -->
+        <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+
+        <!-- increment counter -->
+        <button v-on:click="increment(5)">Increment</button> {{ counter }}
+
+        <!-- computed property -->
+
+        <!-- shorthand -->
+        <button @click="test">Test</button>
+        {{ testCounter }}
+        <br />
+
+        <!-- v-if and v-else -->
+        <template v-if="clicked">
+            Show me if I am not clicked
+        </template>
+        <template v-else>
+            Show me if I am clicked
+        </template>
+        <div v-show="clicked">
+            This is v-show
+        </div>
+        <button @click="clicked = !clicked">Click to if and else</button>
+
+        <br>
+
+        <div v-for="z in 10">{{ z }}</div>
+
+        <hr />
+
+        <ul type="none">
+            <li v-for="(phone,index) in phones">{{ index+1 }} {{ phone.name }}</li>
+        </ul>
+
+        
+    </section>
+    <script src="./vue2.js"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
